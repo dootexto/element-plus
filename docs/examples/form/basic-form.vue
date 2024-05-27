@@ -1,5 +1,5 @@
 <template>
-  <el-form :model="form" label-width="auto" style="max-width: 600px">
+  <el-form :model="form" ref="oForm" label-width="auto" style="max-width: 600px">
     <el-form-item label="Activity name">
       <el-input v-model="form.name" />
     </el-form-item>
@@ -65,8 +65,8 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue'
-
+import { reactive, ref } from 'vue'
+const oForm = ref(null)
 // do not use same name with ref
 const form = reactive({
   name: '',
@@ -80,6 +80,6 @@ const form = reactive({
 })
 
 const onSubmit = () => {
-  console.log('submit!')
+  console.log('submit!', oForm.value)
 }
 </script>
